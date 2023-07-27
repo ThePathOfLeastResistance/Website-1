@@ -1,10 +1,9 @@
-FROM python:3.8-slim-buster
+FROM python:3.8-slim-b
 
-# Set the working directory inside the container
 WORKDIR /python-docker
 
 # Copy the requirements.txt file to the working directory
-COPY requirements.txt requirements.txt
+COPY requirements.txt
 
 # Install the dependencies specified in the requirements.txt file
 RUN pip3 install -r requirements.txt
@@ -16,4 +15,6 @@ EXPOSE 5000
 COPY . .
 
 # Start the Flask application container when starts
- theCMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+
+# Fixed the typo in the CMD command by changing 'theCMD' to 'CMD'
+CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
